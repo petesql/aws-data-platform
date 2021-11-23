@@ -10,14 +10,14 @@ export class CdkStack extends cdk.Stack {
       'AmazonEC2ReadOnlyAccess',
     );
 
-    const user = new iam.User(this, 'iamUser', {
-      userName: 'pw-test-user-1',
+    const user = new iam.User(this, 'testuser', {
+      userName: 'pw-test-user-01',
       managedPolicies: [ 
         readonlyManagedPolicy,
       ]
     })
 
-    new defaultS3Bucket(this, 'bucketNamePete', 'pw-test-bucket-1')
+    new defaultS3Bucket(this, 'bucketname', 'pw-test-default-bucket-01')
 
   }
 }
