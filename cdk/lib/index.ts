@@ -22,14 +22,13 @@ export class CdkStack extends cdk.Stack {
     // this bucket will have the default config
     createBucket(this, 
       'pw-fn-default', //shows as enabled
-      true,
     ) // buckets and objects are not public
 
     // create a s3 bucket that persists between cdk stack deploy/destroy
     createBucket(this, 
       'pw-fn-persist',
-      false,
       {
+        versioned: false,
         removalPolicy: cdk.RemovalPolicy.DESTROY,
       }
     )

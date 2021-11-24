@@ -1,26 +1,23 @@
 import { Construct, RemovalPolicy } from '@aws-cdk/core';
 import { Bucket, BlockPublicAccess, BucketProps } from '@aws-cdk/aws-s3';
-import { BasePrivateKeyEncodingOptions } from 'crypto';
 
 /**
  * Create a S3 Bucket based on input params.
  * 
  * @param scope
- * @param fullBucketName name of new S3 bucket
- * @param versionedFlag version boolean flag 
+ * @param fullBucketName name of new S3 bucket 
  * @param bucketConfig bucket configuration
-* @returns bucket name
+ * @returns bucket name
  */
 function createBucket(
   scope: Construct,
   fullBucketName: string,
-  versionedFlag: boolean = false,
   bucketConfig?: BucketProps,
 ): Bucket {
   const bucketProps = {
     bucketName: fullBucketName,
     publicReadAccess: false,
-    versioned: versionedFlag,
+    versioned: true,
     enforceSSL: true,
     blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
     removalPolicy: RemovalPolicy.DESTROY, // Change to retain if in PR
