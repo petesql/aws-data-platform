@@ -10,4 +10,5 @@ Upcoming dev:
 - add redshift stack
 - add ec2 stack
 - add rds stack
+- add makefile for cdk deploys (deploy --all + env)
 
