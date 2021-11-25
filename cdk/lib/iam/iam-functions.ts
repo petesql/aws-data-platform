@@ -1,7 +1,6 @@
 import { Construct, RemovalPolicy } from '@aws-cdk/core';
 import { Role, RoleProps, ManagedPolicyProps, ServicePrincipal, User, UserProps } from '@aws-cdk/aws-iam';
 
-
 function createUser(
   scope: Construct,
   fullUserName: string,

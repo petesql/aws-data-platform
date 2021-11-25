@@ -2,6 +2,7 @@
 import 'source-map-support/register';
 import { App, Construct, Stack } from '@aws-cdk/core';
 import { CdkStack } from '../lib/index';
+import { iamStack } from '../lib/iam/iam-stack'
 
 const app = new App();
 interface EnvProps {
@@ -10,7 +11,7 @@ interface EnvProps {
 class myApp extends Construct {
   constructor(scope: Construct, id: string, props?: EnvProps) {
       super(scope, id);        
-      new CdkStack(app, 'dp-base-stack', {
+      new CdkStack(app, 'base-stack', {
         /* If you don't specify 'env', this stack will be environment-agnostic.
          * Account/Region-dependent features and context lookups will not work,
          * but a single synthesized template can be deployed anywhere. */
@@ -25,6 +26,7 @@ class myApp extends Construct {
       
         /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
       });
-  }
-}
+      new iamStack(app, 'iam-stack', {
+      })
+}}
 new myApp(app, "myapp");
