@@ -2,7 +2,8 @@
 import 'source-map-support/register';
 import { App, Construct, Stack } from '@aws-cdk/core';
 import { CdkStack } from '../lib/index';
-import { iamStack } from '../lib/iam/iam-stack'
+import { iamStack } from '../lib/iam/iam-stack';
+import { s3Stack } from '../lib/s3-stack';
 
 const app = new App();
 interface EnvProps {
@@ -27,6 +28,8 @@ class myApp extends Construct {
         /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
       });
       new iamStack(app, 'iam-stack', {
+      })
+      new s3Stack(app, 's3-stack', {
       })
 }}
 new myApp(app, "myapp");
