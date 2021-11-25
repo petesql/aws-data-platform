@@ -2,7 +2,7 @@ import * as cdk from '@aws-cdk/core';
 import * as iam from "@aws-cdk/aws-iam";
 import { defaultS3Bucket } from './s3-stack';
 import { createBucket } from '../lib/s3-utils';
-import { createRole } from '../lib/iam-stack';
+import { createUser, createRole } from '../lib/iam-utils';
 
 export class CdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -19,8 +19,13 @@ export class CdkStack extends cdk.Stack {
       ]
     })
 
+    createUser(this,
+    'new-test-user-with-ro-pol', {
+      managedPolicies: [ readonlyManagedPolicy, ]
+    })
+
     createRole(this,
-      'new-test-role'
+      'new-test-role',
     )
 
     // create s3 buckets (using utils function)

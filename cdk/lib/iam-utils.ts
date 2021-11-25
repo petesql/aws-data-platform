@@ -1,5 +1,22 @@
 import { Construct, RemovalPolicy } from '@aws-cdk/core';
-import { Role, RoleProps, ManagedPolicyProps, ServicePrincipal } from '@aws-cdk/aws-iam';
+import { Role, RoleProps, ManagedPolicyProps, ServicePrincipal, User, UserProps } from '@aws-cdk/aws-iam';
+
+
+function createUser(
+  scope: Construct,
+  fullUserName: string,
+  userConfig?: UserProps,
+): User {
+  const userProps = {
+    userName: fullUserName,
+  };
+  const user = new User(
+    scope,
+    fullUserName,
+    { ...userConfig, ...userProps },
+  )
+  return user
+}
 
 /**
  * @param scope
@@ -22,5 +39,6 @@ function createRole(
   )
   return role;
 }
+
 // add to policy 
-export { createRole };
+export { createUser, createRole };
