@@ -1,10 +1,18 @@
-# Welcome to your CDK TypeScript project!
+# CDK TypeScript
 
-This is a blank project for TypeScript development with CDK.
+## Project Structure
+cdk
+> bin
+* `cdk.ts` cdk app init file
+> lib\iam
+* `iam-stack.ts` iam entry-point
+> lib\s3
+* `s3-stack.ts` s3 entry-point
+
+
+## Useful CDK Notes & Commands
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
 
  * `npm run build`   compile typescript to js
  * `npm run watch`   watch for changes and compile
@@ -12,3 +20,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+

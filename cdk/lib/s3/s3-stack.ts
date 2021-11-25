@@ -1,6 +1,6 @@
 import * as core from "@aws-cdk/core";
 import * as s3 from '@aws-cdk/aws-s3';
-import { createBucket } from '../lib/s3-utils';
+import { createBucket } from '../s3/s3-utils';
 
 export class s3Stack extends core.Stack {
     constructor(scope: core.Construct, id: string, props?: core.StackProps) {
