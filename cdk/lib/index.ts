@@ -1,17 +1,24 @@
-import * as cdk from '@aws-cdk/core';
-import * as iam from "@aws-cdk/aws-iam";
-import { createBucket } from '../lib/s3-utils';
-import { createUser, createRole } from '../lib/iam/iam-functions';
-import { iamUser } from '../lib/iam/iam-constructs'
-import { countReset } from 'console';
-import { Construct, Stack } from '@aws-cdk/core';
-
-export class CdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+import { Construct, Stack, StackProps } from '@aws-cdk/core';
+import { createUser, createGlueRole } from '../lib/iam/iam-functions';
+import { ManagedPolicy } from '@aws-cdk/aws-iam'; // move to iam 
+export class CdkStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // 1
+    // Create test iam user
+    const readonlyManagedPolicy = ManagedPolicy.fromAwsManagedPolicyName(
+      'AmazonEC2ReadOnlyAccess',
+    );
+    const user1 = createUser(this,
+      'iamUser001',
+      { managedPolicies: [ readonlyManagedPolicy ] }
+    )
 
+    // Create iam new service role for glue
+    const glueRole1 = createGlueRole(this, 'glueRole001') 
+    // Add AWSGlueServiceRole to role.
+    //const gluePolicy = iam.ManagedPolicy.fromAwsManagedPolicyName("service-role/AWSGlueServiceRole");
+    //role.addManagedPolicy(gluePolicy);
+    
   }
 }
-

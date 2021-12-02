@@ -1,43 +1,46 @@
-import { Construct, RemovalPolicy } from '@aws-cdk/core';
-import { Role, RoleProps, ManagedPolicyProps, ServicePrincipal, User, UserProps } from '@aws-cdk/aws-iam';
+import { Construct } from '@aws-cdk/core';
+import { User, UserProps } from '@aws-cdk/aws-iam';
+import { glueRole } from '../iam/iam-constructs'
 
+/**
+ * Create a new IAM User. 
+ * @param scope
+ * @param iamUsername IAM Username, STRING
+ * @returns IAM Username.
+ */
 function createUser(
   scope: Construct,
-  fullUserName: string,
+  iamUsername: string,
   userConfig?: UserProps,
 ): User {
   const userProps = {
-    userName: fullUserName,
+    userName: iamUsername,
   };
   const user = new User(
     scope,
-    fullUserName,
+    iamUsername,
     { ...userConfig, ...userProps },
   )
   return user
 }
 
 /**
+ * Create a new IAM Service Role for Glue. 
  * @param scope
- * @param fullRoleName 
- * @param managedPolicies
- * @returns iam role name
+ * @param glueRoleName Role Name, STRING
+ * @returns IAM Role Name.
  */
-function createRole(
+function createGlueRole(
   scope: Construct,
-  fullRoleName: string,
-): Role {
-  const roleProps = {
-    roleName: fullRoleName,
-    assumedBy: new ServicePrincipal('sns.amazonaws.com'),
-};
-  const role = new Role(
+  glueRoleName: string,
+): glueRole {
+  const gluerole = new glueRole(
     scope,
-    fullRoleName,
-    { ...roleProps, },
+    glueRoleName + '-gluesvc',
+    glueRoleName,
   )
-  return role;
+  return gluerole;
 }
 
 // add to policy 
-export { createUser, createRole };
+export { createUser, createGlueRole };

@@ -2,7 +2,6 @@
 import 'source-map-support/register';
 import { App, Construct, Stack } from '@aws-cdk/core';
 import { CdkStack } from '../lib/index';
-import { iamStack } from '../lib/iam/iam-stack';
 import { s3Stack } from '../lib/s3/s3-stack';
 import { ec2Stack } from '../lib/ec2/ec2-stack';
 
@@ -42,7 +41,6 @@ class myApp extends Construct {
       }
 
       new CdkStack(app, 'base-stack', stackProps);
-      new iamStack(app, 'iam-stack', { });
       new s3Stack(app, 's3-stack', { });
       new ec2Stack(app, 'ec2-stack', { });
 }}

@@ -1,18 +1,27 @@
-import * as core from "@aws-cdk/core";
-import * as iam from '@aws-cdk/aws-iam';
-import { User, UserProps } from "@aws-cdk/aws-iam";
+import { Construct } from "@aws-cdk/core";
+import { Role, RoleProps, ServicePrincipal } from '@aws-cdk/aws-iam';
 
-export class iamUser extends core.Construct {
-    constructor(scope: core.Construct, id: string, iamUserName: string, userConfig?: UserProps) {
-        super(scope, id);
-   
-        const userProps = {
-            userName: iamUserName,
-          };
-        const user = new User(
-        scope,
-        iamUserName,
-        { ...userConfig, ...userProps },
-        )
+/**
+ * Glue Role CDK Construct 
+ * @param scope
+ * @param iamRoleName Role Name, STRING
+ * @returns IAM Role Name.
+ */
+//  .
+export class glueRole extends Construct {
+    constructor(scope: Construct, id: string, iamRoleName: string, roleConfig?: RoleProps) {
+      super(scope, id);
+      
+      const roleProps = {
+          id: id,
+          roleName: iamRoleName,
+          assumedBy: new ServicePrincipal('glue.amazonaws.com')
+      };
+      const role = new Role(
+          scope,
+          iamRoleName,
+          { ...roleConfig, ...roleProps },
+      )
+      return role;
     }
 }
