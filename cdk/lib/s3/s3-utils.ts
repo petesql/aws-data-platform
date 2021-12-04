@@ -3,11 +3,10 @@ import { Bucket, BlockPublicAccess, BucketProps } from '@aws-cdk/aws-s3';
 
 /**
  * Create a S3 Bucket based on input params.
- * 
  * @param scope
- * @param fullBucketName name of new S3 bucket 
- * @param bucketConfig bucket configuration
- * @returns bucket name
+ * @param fullBucketName S3 Bucket Name, STRING 
+ * @param bucketConfig Bucket Configuration, BucketProps (versioned, removalPolicy, enforceSSL)
+ * @returns S3 Bucket Name
  */
 function createBucket(
   scope: Construct,

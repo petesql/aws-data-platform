@@ -7,7 +7,6 @@ import { Role, RoleProps, ServicePrincipal } from '@aws-cdk/aws-iam';
  * @param iamRoleName Role Name, STRING
  * @returns IAM Role Name.
  */
-//  .
 export class glueRole extends Construct {
     constructor(scope: Construct, id: string, iamRoleName: string, roleConfig?: RoleProps) {
       super(scope, id);

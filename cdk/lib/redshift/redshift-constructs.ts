@@ -5,7 +5,7 @@ import { Vpc } from '@aws-cdk/aws-ec2';
 export class redshiftCluster extends Construct {
     constructor(scope: Construct, id: string, vpc: Vpc, rsClusterName: string, masterUserName: string ) { 
         super(scope, id);
-        const rsCluster = new redshift.Cluster(this, 'rscluster', {
+        const rsCluster = new redshift.Cluster(this, id, {
             clusterName: rsClusterName,
             clusterType: redshift.ClusterType.SINGLE_NODE,
             nodeType: redshift.NodeType.DC2_LARGE,

@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import { App, Construct, Stack } from '@aws-cdk/core';
+import { App, Construct } from '@aws-cdk/core';
 import { CdkStack } from '../lib/index';
-import { s3Stack } from '../lib/s3/s3-stack';
-import { ec2Stack } from '../lib/ec2/ec2-stack';
 
-const app = new App();interface EnvProps {
+interface EnvProps {
   prod: boolean;
 }
 
@@ -16,10 +14,12 @@ const stackProps = {
   }
 }
 
+const app = new App();
+
+
 class myApp extends Construct {
   constructor(scope: Construct, id: string, props?: EnvProps) {
       super(scope, id);
-
       let peerCidrIp: string = app.node.tryGetContext('peerIp');
       let keyName: string = app.node.tryGetContext('keyName');
       
@@ -30,7 +30,7 @@ class myApp extends Construct {
       } else {
           console.log('Default "peerIp" is set to ' + peerCidrIp);
       }
-
+      
       if (keyName == null) {
           console.log('"keyName" context key missing, using hard-coded keyname...');
           keyName = 'pw_key_pair'
@@ -39,9 +39,9 @@ class myApp extends Construct {
       } else {
           console.log('Default "keyName" is set to ' + keyName);
       }
-
+      
       new CdkStack(app, 'base-stack', stackProps);
-      new s3Stack(app, 's3-stack', { });
-      new ec2Stack(app, 'ec2-stack', { });
+        // new ec2Stack(app, 'ec2-stack', { }); ... consider for cdk deply/destroy
+
 }}
 new myApp(app, "myapp");

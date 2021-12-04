@@ -1,3 +1,4 @@
+/* 
 import * as core from "@aws-cdk/core";
 import * as ec2 from '@aws-cdk/aws-ec2';
 
@@ -26,3 +27,5 @@ export class ec2Stack extends core.Stack {
         // 1
     }
 }
+
+*/
