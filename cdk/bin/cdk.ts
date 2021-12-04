@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import { App, Construct } from '@aws-cdk/core';
-import { CdkStack } from '../lib/index';
+import { baseStack } from '../lib/index';
+import { ec2Stack } from '../lib/ec2/ec2-stack';
+import { iamStack } from '../lib/iam/iam-stack';
+import { s3Stack } from '../lib/s3/s3-stack';
+
 
 interface EnvProps {
   prod: boolean;
@@ -15,7 +19,6 @@ const stackProps = {
 }
 
 const app = new App();
-
 
 class myApp extends Construct {
   constructor(scope: Construct, id: string, props?: EnvProps) {
@@ -40,8 +43,10 @@ class myApp extends Construct {
           console.log('Default "keyName" is set to ' + keyName);
       }
       
-      new CdkStack(app, 'base-stack', stackProps);
-        // new ec2Stack(app, 'ec2-stack', { }); ... consider for cdk deply/destroy
+      new baseStack(app, 'dp-base-stack', stackProps);
+      new iamStack(app, 'dp-iam', stackProps );
+      new s3Stack(app, 'dp-s3', stackProps );
+      new ec2Stack(app, 'ec2-stack', peerCidrIp, keyName, stackProps );
 
 }}
 new myApp(app, "myapp");

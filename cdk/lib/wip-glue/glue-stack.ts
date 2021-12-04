@@ -1,15 +1,15 @@
+/* 
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import * as glue from '@aws-cdk/aws-glue';
+//import * as glue from '@aws-cdk/aws-glue';
 //import { Job, JobExecutable, GlueVersion, Code } from '@aws-cdk/aws-glue';
 import { createGlueRole } from '../iam/iam-utils';
 import { createBucket } from '../s3/s3-utils';
 
-/**
  * Glue CDK Stack 
  * @param scope
  * @param id
  * @param props
- */
+ 
 export class glueStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props);
@@ -43,6 +43,6 @@ export class glueStack extends Stack {
 
     //dataS3Bucket.grantReadWrite(role);
 
-  }
+*/
 
   
