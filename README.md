@@ -12,28 +12,22 @@ Dev example:
 
 -- 
 
-## CDK
-### CDK Stacks
-#### Core (VPC) Stack (make deploy base-stack)
-Create a VPC for the stack.   
-#### IAM Stack (make deploy iam-stack)
-Create IAM Users & Roles.
-#### S3 Stack (make deploy s3-stack)
-Create S3 Buckets.
-#### EC2 Stack (make deploy ec2-stack)
-Create EC2 Instances.
-Requires:
-    VPC Stack
-    IAM Stack
-#### Redshift Stack (make deploy redshift-stack)
-Create Redshift Clusters.
-    VPC Stack
-    IAM Stack
-#### RDS Stack (make deploy rds-stack)
-Create RDS Instances.
-    VPC Stack
-    IAM Stack
-
+## CDK Stacks
+* Core (VPC) Stack - `make deploy base-stack`
+    (/cdk/lib/index.ts) Create a VPC for the stack.
+* IAM Stack - `make deploy iam-stack`
+    (/cdk/lib/iam/) Create IAM Users & Roles.
+* S3 Stack - `make deploy s3-stack`
+    (/cdk/lib/s3/) Create S3 Buckets.
+* EC2 Stack - `make deploy ec2-stack`
+    (/cdk/lib/ec2/) Create EC2 Instances.
+        Requires: VPC Stack & IAM Stack
+* Redshift Stack - `make deploy redshift-stack`
+    (/cdk/lib/redshift/) Create Redshift Clusters.
+        Requires: VPC Stack & IAM Stack
+* RDS Stack - `make deploy rds-stack`
+    (/cdk/lib/rds/) Create RDS Instances.
+        Requires: VPC Stack & IAM Stack
 
 
 
