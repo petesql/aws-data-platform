@@ -50,4 +50,4 @@ class myApp extends Construct {
 
 }}
 new myApp(app, "myapp");
-app.synth();
+//app.synth();
