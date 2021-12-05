@@ -43,10 +43,11 @@ class myApp extends Construct {
           console.log('Default "keyName" is set to ' + keyName);
       }
       
-      new baseStack(app, 'dp-base-stack', stackProps);
+      new baseStack(app, 'dp-base-stack', stackProps); // vpc init
       new iamStack(app, 'dp-iam', stackProps );
       new s3Stack(app, 'dp-s3', stackProps );
       new ec2Stack(app, 'ec2-stack', peerCidrIp, keyName, stackProps );
 
 }}
 new myApp(app, "myapp");
+app.synth();

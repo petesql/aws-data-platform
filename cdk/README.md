@@ -9,8 +9,7 @@ cdk
 > lib\s3
 * `s3-stack.ts` s3 entry-point
 
-### Constructs 
-- IAM glueRole
+
 
 ## Useful CDK Notes & Commands
 

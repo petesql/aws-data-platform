@@ -12,3 +12,6 @@ Upcoming dev:
 - add rds stack
 - add makefile for cdk deploys (deploy --all + env)
 
+
+required -
+npm install make
