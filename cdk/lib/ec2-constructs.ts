@@ -1,7 +1,7 @@
 import * as core from "@aws-cdk/core";
 import * as ec2 from '@aws-cdk/aws-ec2';
 
-export class createEC2Instance extends core.Construct {
+export class createEC2 extends core.Construct {
     constructor(scope: core.Construct, id: string, vpc: ec2.Vpc, peerCidrIp: string, az: string, keyName: string) {
         super(scope, id);
         const amznLinuxAmi = ec2.MachineImage.latestAmazonLinux({

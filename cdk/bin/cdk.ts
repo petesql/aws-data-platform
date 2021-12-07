@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import { App, Construct } from '@aws-cdk/core';
-import { baseStack } from '../lib/index';
-import { ec2Stack } from '../lib/ec2/ec2-stack';
-import { iamStack } from '../lib/iam/iam-stack';
-import { s3Stack } from '../lib/s3/s3-stack';
-
+import { coreStack } from '../lib/index';
 
 interface EnvProps {
   prod: boolean;
@@ -43,11 +39,12 @@ class myApp extends Construct {
           console.log('Default "keyName" is set to ' + keyName);
       }
       
-      new baseStack(app, 'dp-base-stack', stackProps); // vpc init
-      new iamStack(app, 'dp-iam', stackProps );
-      new s3Stack(app, 'dp-s3', stackProps );
-      new ec2Stack(app, 'ec2-stack', peerCidrIp, keyName, stackProps );
+      new coreStack(app, 'core-stack', peerCidrIp, keyName, stackProps); // vpc init
+      //new s3Stack(app, 'dp-s3', stackProps );
+      //new ec2Stack(app, 'ec2-stack', peerCidrIp, 'eu-west-1', keyName, stackProps );
 
 }}
 new myApp(app, "myapp");
-//app.synth();
+// app.synth();
+
+  

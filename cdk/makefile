@@ -14,7 +14,7 @@ test:
 	npm run test
 deploy-vpc:
 	echo "deploying vpc stack..."
-	cdk deploy dp-base-stack
+	cdk deploy core-stack
 deploy-iam:
 	echo "deploying iam stack..."
 deploy-ec2:

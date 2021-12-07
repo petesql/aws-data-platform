@@ -1,6 +1,6 @@
 import { Construct } from '@aws-cdk/core';
 import { User, UserProps, ManagedPolicy } from '@aws-cdk/aws-iam';
-import { glueRole } from '../iam/iam-constructs'
+import { glueRole } from '../lib/iam-constructs'
 
 // IAM Managed Policies
 export const roManagedPol = ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess')

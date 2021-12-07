@@ -1,3 +1,4 @@
+/*
 import { Stack, Construct, StackProps } from "@aws-cdk/core";
 import { createBucket } from '../s3/s3-utils';
 
@@ -12,3 +13,4 @@ export class s3Stack extends Stack {
         })
     }
 }
+*/

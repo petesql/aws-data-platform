@@ -1,3 +1,4 @@
+/*
 import { Stack, Construct, StackProps } from "@aws-cdk/core";
 import { createUser, createReadOnlyUser, roManagedPol } from '../iam/iam-utils';
 
@@ -11,3 +12,4 @@ export class iamStack extends Stack {
     
     }
 }
+*/
